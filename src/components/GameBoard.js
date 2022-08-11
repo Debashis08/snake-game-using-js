@@ -217,9 +217,6 @@ export default class GameBoard extends Component {
                 <button className='button'>Home</button>
               </Link>
               <button className='button' onClick={this.pauseGame}>Pause</button>
-              <Link to={`/gameboard${this.level}`} style={{textDecoration:"none"}}>
-                <button className='button' onClick={this.restartGame}>Restart</button>
-              </Link>
             </div>
           </div>
         </div>
