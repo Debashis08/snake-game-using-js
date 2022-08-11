@@ -24,12 +24,23 @@
 p
 {
     font-size: 30px;
-    padding: 40px;
+    padding: 30px;
 }
 h2
 {
     font-size: 50px;
     padding: 30px;
+}
+h3
+{
+    font-size: 20px;
+    padding: 15px;
+}
+.instruction
+{
+    font-size: 18px;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 .hscore-div

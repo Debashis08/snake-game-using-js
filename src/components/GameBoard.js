@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Link} from 'react-router-dom';
+
 import Food from './Food';
 import Snake from './Snake';
 import './GameBoard.css';
-
 const getRandomCoordinates = () => {
   let min = 1;
   let max = 98;
@@ -12,22 +13,22 @@ const getRandomCoordinates = () => {
 }
 
 const val=0;
-
 export default class GameBoard extends Component {
 
   constructor(props)
   {
     super(props);
     this.state={
-      
       score:0,
       food:getRandomCoordinates(),
+      initialSpeed:props.speed,
       speed:props.speed,
       level:props.level,
       direction:'RIGHT',
       snakeDots: [
         [0, 0],
-        [2, 0]
+        [2, 0],
+        [4,0]
       ],
       h:(localStorage.getItem(`${props.level}hscore`)===null?localStorage.setItem(`${props.level}hscore`,JSON.stringify(val)):localStorage.getItem('highscore')),
       highScore:localStorage.getItem(`${props.level}hscore`),
@@ -76,7 +77,7 @@ export default class GameBoard extends Component {
         this.setState({ direction: 'RIGHT' });
         break;
       case 80:
-        alert('Game is Paused, Press OK to continue Playing !!');
+        alert('Game is Paused, Press OK or Enter Key to continue Playing !!');
         break;
       default:
     }
@@ -152,12 +153,12 @@ export default class GameBoard extends Component {
     this.setState(
       {
         snakeDots:newSnake,
-        score:newSnake.length-2
+        score:newSnake.length-3
       }
     );
-    if(newSnake.length-2>=parseInt(JSON.parse(this.state.highScore)))
+    if(newSnake.length-3>=parseInt(JSON.parse(this.state.highScore)))
     {
-      localStorage.setItem(`${this.state.level}hscore`,JSON.stringify(newSnake.length-2));
+      localStorage.setItem(`${this.state.level}hscore`,JSON.stringify(newSnake.length-3));
       this.setState({
         highScore:localStorage.getItem(`${this.state.level}hscore`)
       })
@@ -177,17 +178,27 @@ export default class GameBoard extends Component {
 
   onGameOver()
   {
-    alert(`Game is OVER. Snake length is ${this.state.snakeDots.length -2}. Press any key to replay at this level`);
+    alert(`Game is OVER. Snake length is ${this.state.snakeDots.length -3}. Press Enter Key to replay at this level`);
     this.setState({
       food:getRandomCoordinates(),
       score:0,
       highScore:localStorage.getItem(`${this.state.level}hscore`),
+      speed:this.initialSpeed,
       direction:'RIGHT',
       snakeDots: [
         [0, 0],
-        [2, 0]
+        [2, 0],
+        [4,0]
       ]
     });
+  }
+  pauseGame()
+  {
+    alert('Game is Paused, Press OK or Enter Key to continue Playing !!');
+  }
+  restartGame()
+  {
+    window.location.reload(false);
   }
 
   render() {
@@ -200,6 +211,15 @@ export default class GameBoard extends Component {
         <div className='score-area'>
           <h2>Highest Score     {parseInt(JSON.parse(this.state.highScore))}</h2>
           <h2>Current Score   {this.state.score}</h2>
+          <div className='container'>
+            <div className='btn-container'>
+              <Link to='/' style={{textDecoration:"none"}}>
+                <button className='button'>Home</button>
+              </Link>
+              <button className='button' onClick={this.pauseGame}>Pause</button>
+              <button className='button' onClick={this.restartGame}>Restart</button>
+            </div>
+          </div>
         </div>
       </div>
       

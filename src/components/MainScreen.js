@@ -40,6 +40,21 @@ export default class MainScreen extends Component {
           <Link to='/gameboardeasy' style={{ textDecoration: 'none' }}><p>Easy</p></Link>
           <Link to='/gameboardmedium' style={{ textDecoration: 'none' }}><p>Medium</p></Link>
           <Link to='/gameboardhard' style={{ textDecoration: 'none' }}><p>Hard</p></Link>
+          <h3>Instructions</h3>
+            <div className='instruction'>
+              <br>
+              </br>
+              UP - Up arrow key or W 
+              <br>
+              </br>
+              DOWN - Down arrow key or S
+              <br></br>
+              LEFT - Left arrow key or A
+              <br></br>
+              RIGHT - Right arrow key or D
+              <br></br>
+              Press P to Pause the game
+            </div>
         </div>
         <div className='scorecard'>
           <h2>Highest Scores</h2>
