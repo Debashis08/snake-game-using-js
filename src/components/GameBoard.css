@@ -2,23 +2,23 @@
 .gameboard
 {
     margin: 40px auto;
-    height: 600px;
+    height: 550px;
     width: 97%;
     justify-content: space-around;
     display: flex;
 }
 .game-area
 {
-    height: 600px;
-    width: 600px;
+    height: 550px;
+    width: 550px;
     position: relative;
     display: inline-block;
     border: 2px solid black;
 }
 .score-area
 {
-    height: 600px;
-    width: 600px;
+    height: 550px;
+    width: 550px;
     display: inline-block;
     border: 2px solid black;
 }
@@ -30,7 +30,7 @@ h2
 .container
 {
     height: 300px;
-    width: 600px;
+    width: 550px;
     margin: auto;
 }
 .btn-container
